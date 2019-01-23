@@ -1,0 +1,50 @@
+<h1 id="center">Eat Da Burger</h1>
+
+
+
+<h2>Burgers List</h2>
+
+
+<ul>
+    {{#each burgers}}
+    {{#unless devoured}}
+    {{/unless}}
+    {{/each}}
+    <li>
+        {{name}}
+
+        <button class="change-devoured" data-id="{{id}}" data-devoured="{{devoured}}">
+            {{#if devoured}}Devoured!{{else}}Devour!{{/if}}
+        </button>
+
+
+    </li>
+
+</ul>
+
+<h2>Devoured</h2>
+<ul>
+
+    <li>
+        {{name}}
+
+        <button class="change-devoured" data-id="{{id}}" data-devoured="{{devoured}}">
+            Devoured!
+        </button>
+
+
+
+</ul>
+
+<form class="create-form">
+
+    <div class="burgList">
+        <label for="burger"> Burger Name:</label>
+        <input type="text" id="burger" name="name">
+    </div>
+
+    <div id="addBtn">
+        <button type="submit">Add a burger</button>
+    </div>
+
+</form>
