@@ -2,9 +2,9 @@ $(function() {
   $(".change-devoured").on("click", function(event) {
     var id = $(this).data("id");
 
-    $.ajax("/api/devoured" + id, {
+    $.ajax("/api/burgers/" + id, {
       type: "PUT",
-      data: devoured
+      data: { devoured: true }
     }).then(function() {
       console.log("devoured");
       location.reload();
@@ -16,9 +16,6 @@ $(function() {
 
     var newBurg = {
       name: $("#burger")
-        .val()
-        .trim(),
-      devoured: $("true")
         .val()
         .trim()
     };

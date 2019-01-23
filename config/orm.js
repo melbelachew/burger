@@ -16,27 +16,26 @@ function ORM(table) {
       });
     });
   };
+
+  this.create = function(name, devoured) {
+    const sql = `INSERT INTO ?? (name, devoured) VALUE (?, ?)`;
+
+    return new Promise(function(resolve, reject) {
+      connection.query(sql, [table, name, devoured], function(err, data) {
+        if (err) reject(err);
+        resolve(data);
+      });
+    });
+  };
+
+  this.update = function(devoured, id) {
+    const sql = `UPDATE ?? SET devoured = ? WHERE id = ?`;
+
+    return new Promise(function(resolve, reject) {
+      connection.query(sql, [table, devoured, id], function(err, data) {
+        if (err) reject(err);
+      });
+    });
+  };
 }
-
-this.create = function(name, devoured) {
-  const sql = `INSERT INTO ?? (name, devoured) VALUE (?, ?)`;
-
-  return new Promise(function(resolve, reject) {
-    connection.query(sql, [table, name, devoured], function(err, data) {
-      if (err) reject(err);
-      resolve(data);
-    });
-  });
-};
-
-this.update = function(devoured, id) {
-  const sql = `UPDATE ?? SET devoured = ? WHERE id = ?`;
-
-  return new Promise(function(resolve, reject) {
-    connection.query(sql, [table, devoured, id], function(err, data) {
-      if (err) reject(err);
-    });
-  });
-};
-
 module.exports = ORM;

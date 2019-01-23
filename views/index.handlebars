@@ -1,15 +1,9 @@
 <h1 id="center">Eat Da Burger</h1>
 
-
-
 <h2>Burgers List</h2>
-
-
 <ul>
     {{#each burgers}}
     {{#unless devoured}}
-    {{/unless}}
-    {{/each}}
     <li>
         {{name}}
 
@@ -19,23 +13,26 @@
 
 
     </li>
-
+    {{/unless}}
+    {{/each}}
 </ul>
 
 <h2>Devoured</h2>
 <ul>
-
+    {{#each burgers}}
+    {{#if devoured}}
     <li>
         {{name}}
 
         <button class="change-devoured" data-id="{{id}}" data-devoured="{{devoured}}">
-            Devoured!
+            {{#if devoured}}Devoured!{{else}}Devour!{{/if}}
         </button>
 
 
-
+    </li>
+    {{/if}}
+    {{/each}}
 </ul>
-
 <form class="create-form">
 
     <div class="burgList">
